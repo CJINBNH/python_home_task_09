@@ -31,11 +31,12 @@ def start_game(message):
 def players_move(message):
     global candies, is_game_on
     try:
-        n = int(message.next)
+        n = int(message.text)
         if n > 28:
             bot.send_message(message.chat.id, 'Число должно быть не больше 28. Повторите ввод')
         else:
             if n < candies:
+                candies -= n        
                 bot.send_message(message.chat.id, f'Осталось {candies} конфет')
                 bots_move(message)
                 if is_game_on:
